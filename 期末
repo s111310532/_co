@@ -1,1 +1,39 @@
+核心章節架構
+第 6 章：組譯器 (Assembler)
+這是軟體層的第一步。任務是將 Hack 組合語言 (Assembly) 翻譯成 機器碼 (Binary Code)。
 
+關鍵任務：處理符號（Symbols）。需要建立「符號表」來追蹤變數名稱與標記（Labels）對應的記憶體位址。
+
+輸出：.asm 檔轉為 .hack 檔（由 0 與 1 組成的純文字檔）。
+
+第 7 & 8 章：虛擬機器 (Virtual Machine, VM)
+這兩章實作了「堆疊架構 (Stack Arithmetic)」的 VM 編譯器。
+
+第 7 章 (基礎)：處理堆疊運算（如 push, pop, add）與記憶體段（local, argument, this, that 等）。
+
+第 8 章 (進階)：處理程式流程控制（goto, if-goto）與函式呼叫（call, function, return）。
+
+重要觀念：將複雜的高階指令轉化為中介的 VM 代碼，是實作平台無關性的關鍵。
+
+第 9 章：高階語言 Jack
+這一章不涉及實作，而是學習使用 Jack 語言（種類似 Java/C# 的物件導向語言）撰寫應用程式（如貪食蛇、俄羅斯方塊）。這讓你理解之後編譯器需要處理什麼樣的語法。
+
+第 10 & 11 章：編譯器 (Compiler)
+這是最具挑戰性的部分，將 Jack 原始碼轉譯為 VM 代碼。
+
+第 10 章 (語法分析)：實作遞迴下降解析器 (Recursive Descent Parser)，將程式碼拆解成 語法樹 (Syntax Tree) 並輸出 XML 格式。
+
+第 11 章 (代碼生成)：將語法樹轉換為實際的 VM 指令。需要處理變數作用域、物件建構與方法呼叫的底層細節。
+
+第 12 章：作業系統 (Operating System)
+最後一塊拼圖。用 Jack 語言編寫標準函式庫 (Standard Library)，讓硬體能執行高階功能。
+
+關鍵模組：
+
+Math: 實作乘除法與開根號（硬體層只提供加減法）。
+
+Memory: 實作 alloc 和 dealloc（動態記憶體分配/堆積管理）。
+
+Screen & Output: 實作繪圖（畫線、畫圓）與文字顯示。
+
+Keyboard: 處理使用者輸入。
